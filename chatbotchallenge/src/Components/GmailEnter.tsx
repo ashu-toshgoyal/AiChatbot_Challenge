@@ -9,10 +9,18 @@ function GmailEnter() {
 
   const handleContinue = () => {
     if (email.trim() === "") {
-      alert("Please enter your Gmail before continuing."); // show alert if empty
+      alert("Please enter your Gmail before continuing.");
       return;
     }
-    // ✅ navigate if email is filled
+
+    // ✅ Regex to validate Gmail format
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!gmailRegex.test(email)) {
+      alert("Please enter a valid Gmail ID (example: name@gmail.com).");
+      return;
+    }
+
+    // ✅ navigate if email is valid
     navigate("/Details");
   };
 
